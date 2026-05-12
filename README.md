@@ -52,12 +52,17 @@ GET /
 
 GET /health
 
+## Payload
+
+POST /webhook/message
+
 ---
 
 ## Current Table
 
 guest_messages
 
+```text
 Fields:
 - message_id
 - source
@@ -67,6 +72,16 @@ Fields:
 - booking_ref
 - property_id
 - query_type
+```
+
+## Current Processing Flow
+
+```text
+Webhook Request
+→ Validate
+→ Normalize
+→ Persist
+```
 
 ## Notes : 
 
@@ -83,7 +98,7 @@ The goal for the backend is to achieve the following things :
 7. Route back the response safely.
 
 I have decide to make the Backend in in FastAPI since I'm more profecient with Python and learning FastAPI seemed more comfortable. 
-It also gives me some benefits like : async-readiness, strong validation via Pydantic and a lightweight production environment.
+It also gives me some benefits like : async-readiness, strong validation via Pydantic and a lightweight production environment AND THAT BEAUTIFUL DOCS
 
 I'm gonna breakdown the problem into incremental steps :
 1. Make a persistent infrastructure that can correctly recieve/ fetch data from endpoints. 

@@ -15,7 +15,7 @@ class GuestMessage(Base):
     
     message_text = Column(Text, nullable=False)
     
-    time_stamp = Column(DateTime, nullable=False)
+    timestamp = Column(DateTime, nullable=False)
     
     booking_ref = Column(String)
 
