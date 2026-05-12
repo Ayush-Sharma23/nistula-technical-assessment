@@ -34,10 +34,10 @@ class UnifiedMessage(BaseModel):
 
 	property_id: str
 
-	query_type: str | None = None
+	query_type: str 
 
 	@staticmethod
-	def build(payload):
+	def build(payload, query_type):
 
 		return UnifiedMessage(
 			message_id=str(uuid4()),
@@ -47,5 +47,5 @@ class UnifiedMessage(BaseModel):
 			timestamp=payload.timestamp,
 			booking_ref=payload.booking_ref,
 			property_id=payload.property_id,
-			query_type=None
+			query_type=query_type
 		)

@@ -74,13 +74,25 @@ Fields:
 - query_type
 ```
 
+## Current Strategy
+
+Rule-based keyword classification.
+```text
+Advantages:
+- deterministic
+- fast
+- easy to debug
+```
+---
+
 ## Current Processing Flow
 
 ```text
 Webhook Request
-→ Validate
-→ Normalize
-→ Persist
+- Validate
+- Normalize
+- Persist
+- Classify
 ```
 
 ## Notes : 

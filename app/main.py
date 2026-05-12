@@ -5,7 +5,7 @@ from app.config import APP_NAME, ENVIRONMENT
 from app.database import SessionLocal
 from app.models import GuestMessage
 from app.schemas import IncomingMessage, UnifiedMessage
-
+from app.classifier import classify_query
 
 app = FastAPI(title = APP_NAME)
 
@@ -41,7 +41,9 @@ def handle_message(payload : IncomingMessage):
 			)
 
 		#creating a unified model from the payload
-		unified = UnifiedMessage.build(payload)
+		query_type = classify_query(payload.message)
+
+		unified = UnifiedMessage.build(payload,query_type)
 
 		#initiating session to store the incoming message
 		db: Session = SessionLocal()
