@@ -1,4 +1,4 @@
-from fastapi improt FastAPI
+from fastapi import FastAPI
 from app.config import APP_NAME, ENVIRONMENT
 
 app = FastAPI(title = APP_NAME)

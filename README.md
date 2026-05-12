@@ -24,6 +24,16 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+## Database Initialization
+
+Run:
+
+```bash
+python -m app.init_db
+```
+
+---
+
 ## Run server
 
 ```bash
@@ -43,6 +53,20 @@ GET /
 GET /health
 
 ---
+
+## Current Table
+
+guest_messages
+
+Fields:
+- message_id
+- source
+- guest_name
+- message_text
+- timestamp
+- booking_ref
+- property_id
+- query_type
 
 ## Notes : 
 
