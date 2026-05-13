@@ -1,4 +1,5 @@
 venv/
 __pychache__/
+villa_bert_model/
 .env
 *.pyc
