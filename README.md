@@ -1,6 +1,6 @@
 # Nistula Guest Message Handler 
 
-### Note : At the end of the readme is my thought process between adding each feature and commiting it.
+### Note : This is the MVP version of the project. It runs on rule-based classification and heurisitical scoring. For semantic classificaion,check semantic_classifier_based branch. 
 
 # Running the Project
 
