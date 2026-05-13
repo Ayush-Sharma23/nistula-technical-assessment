@@ -22,3 +22,38 @@ class GuestMessage(Base):
     property_id = Column(String)
 
     query_type = Column(String)
+
+
+class Property(Base):
+
+    __tablename__ = "properties"
+
+    property_id = Column(String, primary_key=True)
+
+    property_name = Column(String, nullable=False)
+
+    location = Column(String)
+
+    bedrooms = Column(String)
+
+    max_guests = Column(String)
+
+    private_pool = Column(String)
+
+    check_in = Column(String)
+
+    check_out = Column(String)
+
+    base_rate = Column(String)
+
+    extra_guest_rate = Column(String)
+
+    wifi_password = Column(String)
+
+    caretaker_hours = Column(String)
+
+    chef_on_call = Column(String)
+
+    availability = Column(String)
+
+    cancellation_policy = Column(String)
