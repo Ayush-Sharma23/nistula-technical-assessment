@@ -122,3 +122,9 @@ I'm gonna breakdown the problem into incremental steps :
 6. Return the whole thing in a neat structure. 
 
 I'll worry about scalability and flexibility once our MVP works to a satifactory level.
+
+
+## WHAT I'M DOING RIGHT NOW
+```text
+	Currently adding context as a constant string, but will later change it such that it pulls context from database and send it to claude via api.
+```
