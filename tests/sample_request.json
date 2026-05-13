@@ -22,5 +22,13 @@
     "timestamp": "2026-05-05T10:30:00Z",
     "booking_ref": "NIS-2024-0893",
     "property_id": "villa-b1"
+  },
+  {
+    "source": "booking_com",
+    "guest_name": "Arjun Patel",
+    "message": "Can I use the swimming pool at night?",
+    "timestamp": "2026-05-05T10:30:00Z",
+    "booking_ref": "NIS-2024-0893",
+    "property_id": "villa-b1"
   }
 ]

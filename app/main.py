@@ -8,6 +8,7 @@ from app.schemas import IncomingMessage, UnifiedMessage
 from app.classifier import classify_query
 from app.ai_service import generate_reply
 from app.confidence import calculate_confidence
+from app.property_service import get_property
 
 app = FastAPI(title = APP_NAME)
 
@@ -49,6 +50,14 @@ async def handle_message(payload : IncomingMessage):
 		#creating a unified model from the payload
 		query_type = classify_query(payload.message)
 
+		property_obj = get_property(payload.property_id)
+
+		if not property_obj:
+
+			raise HTTPException(
+				status_code = 404,
+				detail = "Property not found"
+				)
 
 		unified = UnifiedMessage.build(payload,query_type)
 
@@ -77,7 +86,8 @@ async def handle_message(payload : IncomingMessage):
 
 		confidence_score, action = calculate_confidence(
 			unified.query_type,
-			unified.message_text
+			unified.message_text,
+			property_obj
 		)
 
 		return{
