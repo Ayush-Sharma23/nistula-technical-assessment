@@ -34,6 +34,13 @@ python -m app.init_db
 
 ---
 
+## Classifier Model Setup 
+
+Download model from :https://huggingface.co/zuccyzucc/guest_message_classifier
+
+extract it into the app/ folder where your classifier.py file is. 
+(Rename it to villa_bert_model. Otherwise edit the PATH in classifier.py)
+
 ## Run server
 
 ```bash
@@ -206,5 +213,5 @@ I'll worry about scalability and flexibility once our MVP works to a satifactory
 
 ## WHAT I'M DOING RIGHT NOW
 ```text
-	Making test for the app. Improving Error Handling. Then branch out to a DeBERTa-based query classifier. 
+	Figuring out a DeBERTa  
 ```
