@@ -45,7 +45,10 @@ def classify_query(message: str) -> str:
 		"annoying",
 		"not working",
 		"bad experince",
-		"don't like"
+		"don't like",
+		"hate",
+		"dismissive",
+		"disregard"
 	]):
 		return "complaint"
 

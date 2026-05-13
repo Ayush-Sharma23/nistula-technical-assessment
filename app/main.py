@@ -7,6 +7,7 @@ from app.models import GuestMessage
 from app.schemas import IncomingMessage, UnifiedMessage
 from app.classifier import classify_query
 from app.ai_service import generate_reply
+from app.confidence import calculate_confidence
 
 app = FastAPI(title = APP_NAME)
 
@@ -70,10 +71,17 @@ def handle_message(payload : IncomingMessage):
 			query_type=unified.query_type
 		)
 
+		confidence_score, action = calculate_confidence(
+			unified.query_type,
+			unified.message_text
+		)
+
 		return{
 			"message_id": unified.message_id,
 			"query_type": unified.query_type,
-			"drafted_reply": drafted_reply
+			"drafted_reply": drafted_reply,
+			"confidence_score": confidence_score,
+			"action": action
 		}
 
 	except Exception as e:
