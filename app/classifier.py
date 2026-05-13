@@ -1,7 +1,7 @@
 from app.bert_trainer import VillaMessageClassifier
 
 # Load once at module level — not on every call
-# After
+
 from pathlib import Path
 
 # change "villa_bert_model" to whatever you decided to name your model's folder
