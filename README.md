@@ -60,6 +60,36 @@ POST /webhook/message
 
 GET /docs
 
+## Testing in PowerShell
+
+```Text
+$body = @{
+    source      = "whatsapp"
+    guest_name  = "Rahul Sharma"
+    message     = "Is the villa available from April 20 to 24?"
+    timestamp   = "2026-05-05T10:30:00Z"
+    booking_ref = "NIS-2024-0891"
+    property_id = "villa-b1"
+}
+
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/webhook/message" -Method Post -Body ($body | ConvertTo-Json) -ContentType "application/json"
+```
+
+## Testing in Bash
+
+```Text
+curl -X POST "http://127.0.0.1:8000/webhook/message" \
+-H "Content-Type: application/json" \
+-d '{
+  "source": "whatsapp",
+  "guest_name": "Rahul Sharma",
+  "message": "Is the villa available from April 20 to 24?",
+  "timestamp": "2026-05-05T10:30:00Z",
+  "booking_ref": "NIS-2024-0891",
+  "property_id": "villa-b1"
+}'
+```
+
 ---
 
 ## Current Table
@@ -99,7 +129,53 @@ Webhook Request
 - Persist
 ```
 
-## Notes : 
+# Future Improvements
+
+## Smarter Classification
+
+Current implementation uses deterministic keyword matching.
+```text
+Future upgrades may include:
+- sentiment analysis
+- transformer-based intent detection
+- multilingual support
+- semantic embeddings
+```
+---
+
+## Better Confidence Scoring
+
+Current scoring is heuristic-based.
+```text
+Future improvements:
+- hallucination risk estimation
+- ambiguity scoring
+- LLM self-evaluation
+- semantic uncertainty detection
+```
+---
+
+## AI Guardrails
+```text
+Planned safeguards:
+- structured outputs
+- schema validation
+- moderation layer
+- prompt injection resistance
+- hallucination prevention
+```
+---
+
+## Scalability
+```text
+Potential future architecture:
+- Redis queues
+- async workers
+- Kafka event streaming
+- vector retrieval
+- multi-property context retrieval
+```
+# Notes : 
 
 The task in hand is to make a backend system to recieve guest messages from multiple channels such as :
 Whatsapp, Airbnb, Booking.com, Instagram and Nistula's website
