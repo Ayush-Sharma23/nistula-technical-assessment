@@ -78,11 +78,11 @@ async def handle_message(payload : IncomingMessage):
 
 		db.commit()
 
-		# drafted_reply = generate_reply(
-		# 	guest_name = unified.guest_name,
-		# 	message=unified.message_text,
-		# 	query_type=unified.query_type
-		# )
+		drafted_reply = generate_reply(
+			guest_name = unified.guest_name,
+			message=unified.message_text,
+			query_type=unified.query_type
+		)
 
 		confidence_score, action = calculate_confidence(
 			unified.query_type,
@@ -93,9 +93,8 @@ async def handle_message(payload : IncomingMessage):
 		return{
 			"message_id": unified.message_id,
 			"query_type": unified.query_type,
-			# "drafted_reply": drafted_reply,
+			"drafted_reply": drafted_reply,
 			"confidence_score": confidence_score,
-			# "confidence_score": model_confidence,
 			"action": action
 		}
 
