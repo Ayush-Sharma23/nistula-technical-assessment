@@ -34,6 +34,10 @@ def health_check():
 
 @app.post("/webhook/message")
 def handle_message(payload : IncomingMessage):
+
+	#initiating session to store the incoming message
+	db: Session = SessionLocal()
+
 	try:
 		# validating the source of incoming data 
 		if payload.source not in VALID_SOURCES:
@@ -47,8 +51,7 @@ def handle_message(payload : IncomingMessage):
 
 		unified = UnifiedMessage.build(payload,query_type)
 
-		#initiating session to store the incoming message
-		db: Session = SessionLocal()
+		
 
 		db_message = GuestMessage(
 				message_id = unified.message_id,
@@ -84,9 +87,15 @@ def handle_message(payload : IncomingMessage):
 			"action": action
 		}
 
+	except HTTPException:
+		raise
+
 	except Exception as e:
 
 		raise HTTPException(
 			status_code=500,
 			detail=str(e)
 		)
+
+	finally:
+		db.close()
