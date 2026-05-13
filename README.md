@@ -91,8 +91,8 @@ Advantages:
 Webhook Request
 - Validate
 - Normalize
-- Persist
 - Classify
+- Persist
 ```
 
 ## Notes : 
