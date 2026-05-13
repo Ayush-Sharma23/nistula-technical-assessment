@@ -56,6 +56,10 @@ GET /health
 
 POST /webhook/message
 
+## Docs (TO TEST)
+
+GET /docs
+
 ---
 
 ## Current Table
@@ -126,5 +130,5 @@ I'll worry about scalability and flexibility once our MVP works to a satifactory
 
 ## WHAT I'M DOING RIGHT NOW
 ```text
-	Currently adding context as a constant string, but will later change it such that it pulls context from database and send it to claude via api.
+	Making test for the app. Improving Error Handling. Then branch out to a DeBERTa-based query classifier. 
 ```
