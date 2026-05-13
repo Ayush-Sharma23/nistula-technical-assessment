@@ -6,6 +6,7 @@ from app.database import SessionLocal
 from app.models import GuestMessage
 from app.schemas import IncomingMessage, UnifiedMessage
 from app.classifier import classify_query
+from app.ai_service import generate_reply
 
 app = FastAPI(title = APP_NAME)
 
@@ -63,9 +64,16 @@ def handle_message(payload : IncomingMessage):
 
 		db.commit()
 
+		drafted_reply = generate_reply(
+			guest_name = unified.guest_name,
+			message=unified.message_text,
+			query_type=unified.query_type
+		)
+
 		return{
-			"message" : "Message processed successfully",
-			"data" : unified.model_dump()
+			"message_id": unified.message_id,
+			"query_type": unified.query_type,
+			"drafted_reply": drafted_reply
 		}
 
 	except Exception as e:
