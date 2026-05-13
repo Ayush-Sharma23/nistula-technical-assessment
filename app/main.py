@@ -33,7 +33,7 @@ def health_check():
 	}
 
 @app.post("/webhook/message")
-def handle_message(payload : IncomingMessage):
+async def handle_message(payload : IncomingMessage):
 
 	#initiating session to store the incoming message
 	db: Session = SessionLocal()
@@ -48,6 +48,7 @@ def handle_message(payload : IncomingMessage):
 
 		#creating a unified model from the payload
 		query_type = classify_query(payload.message)
+
 
 		unified = UnifiedMessage.build(payload,query_type)
 
@@ -68,11 +69,11 @@ def handle_message(payload : IncomingMessage):
 
 		db.commit()
 
-		drafted_reply = generate_reply(
-			guest_name = unified.guest_name,
-			message=unified.message_text,
-			query_type=unified.query_type
-		)
+		# drafted_reply = generate_reply(
+		# 	guest_name = unified.guest_name,
+		# 	message=unified.message_text,
+		# 	query_type=unified.query_type
+		# )
 
 		confidence_score, action = calculate_confidence(
 			unified.query_type,
@@ -82,8 +83,9 @@ def handle_message(payload : IncomingMessage):
 		return{
 			"message_id": unified.message_id,
 			"query_type": unified.query_type,
-			"drafted_reply": drafted_reply,
+			# "drafted_reply": drafted_reply,
 			"confidence_score": confidence_score,
+			# "confidence_score": model_confidence,
 			"action": action
 		}
 

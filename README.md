@@ -138,7 +138,7 @@ Webhook Request
 
 # Future Improvements
 
-## Smarter Classification
+## Smarter Classification --- COMPLETED!
 
 Current implementation uses deterministic keyword matching.
 ```text
@@ -213,5 +213,14 @@ I'll worry about scalability and flexibility once our MVP works to a satifactory
 
 ## WHAT I'M DOING RIGHT NOW
 ```text
-	Figuring out a DeBERTa  
+
+	I'm shifting away from the simple heuristical scoring method and I'm gonna add more metrics such as :
+	1. Does claude have required context to answer this fully?
+	2. Is the query vague?
+	3. Is the query sensitive?
+	4. Does the request need human approval?
+	5. Does the request align with our policy?
+
+	Now since I don't have access to ClaudeAPI right now, I'll build it as a math engine. But I do want to make it into a smarter system by incorporating prompt engineering in the mix. 
+
 ```
