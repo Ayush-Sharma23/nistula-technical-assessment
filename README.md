@@ -150,7 +150,7 @@ Future upgrades may include:
 ```
 ---
 
-## Better Confidence Scoring
+## Better Confidence Scoring --- COMPLETED!
 
 Current scoring is heuristic-based.
 ```text
@@ -162,26 +162,6 @@ Future improvements:
 ```
 ---
 
-## AI Guardrails
-```text
-Planned safeguards:
-- structured outputs
-- schema validation
-- moderation layer
-- prompt injection resistance
-- hallucination prevention
-```
----
-
-## Scalability
-```text
-Potential future architecture:
-- Redis queues
-- async workers
-- Kafka event streaming
-- vector retrieval
-- multi-property context retrieval
-```
 # Notes : 
 
 The task in hand is to make a backend system to recieve guest messages from multiple channels such as :
