@@ -117,12 +117,12 @@ Fields:
 
 ## Current Strategy
 
-Rule-based keyword classification.
+Semantic DeBERTA Based keyword classification.
 ```text
 Advantages:
-- deterministic
-- fast
-- easy to debug
+- broader context
+- don't need to specify keywords
+- trained on augmented guest message data
 ```
 ---
 
@@ -134,6 +134,9 @@ Webhook Request
 - Normalize
 - Classify
 - Persist
+- AI draft
+- Confidence Scoring
+- Response
 ```
 
 # Future Improvements
