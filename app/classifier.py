@@ -4,6 +4,8 @@ from app.bert_trainer import VillaMessageClassifier
 # After
 from pathlib import Path
 
+# change "villa_bert_model" to whatever you decided to name your model's folder
+
 MODEL_DIR = Path(__file__).parent / "villa_bert_model"
 _classifier = VillaMessageClassifier(model_dir=str(MODEL_DIR))
 
