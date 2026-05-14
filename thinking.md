@@ -8,6 +8,9 @@ It is 3am. A guest at Villa B1 sends a WhatsApp message:
 
 # Question A — The Immediate Response
 
+What should the AI reply right now at 3am? Write the actual message. 
+Explain in 2-3 lines why you chose this wording.
+
 ## AI Reply
 
 Hi, I’m very sorry about this — this is not the experience we wanted for you. I’ve escalated this to our on-call support team immediately and marked it as urgent. Our staff will contact you shortly to resolve the hot water issue as quickly as possible.
@@ -27,6 +30,10 @@ The AI should not autonomously approve compensation or speculate about repair ti
 ---
 
 # Question B — The System Design
+
+What should the platform do beyond sending a message? Walk through the full 
+system response: what gets triggered, who gets notified, what gets logged, 
+what happens if no human responds within 30 minutes.
 
 The platform should immediately classify this as:
 - complaint
@@ -63,8 +70,11 @@ If no human responds within 30 minutes, the system should
 
 # Question C — The Learning
 
-Three similar complaints in two months indicates a recurring operational failure, not an isolated support issue.
+This is the third time in two months a guest has complained about hot water 
+at Villa B1. What should the system do with this pattern? What would you 
+build to prevent this complaint from happening a fourth time?
 
+Three similar complaints in two months indicates a recurring operational failure.
 We can setup a complaint tracking system that seeks for recurring patterns and raises them as an issue once it sees
 a trend in the complaints. This trend could be decided by
 - threshold amount of certain complaints on a certain property
@@ -76,7 +86,6 @@ The system should:
 - automatically raise a maintenance-risk flag for the property
 
 Preventative measures like as-follows can be taken:
-
 1. Complaint pattern analytics
 2. Property health scoring
 3. Preventive maintenance workflows
