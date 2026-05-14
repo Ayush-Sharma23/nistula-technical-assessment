@@ -148,26 +148,18 @@ Webhook Request
 
 ## Smarter Classification --- COMPLETED!
 
-Current implementation uses deterministic keyword matching.
-```text
-Future upgrades may include:
-- sentiment analysis
-- transformer-based intent detection
-- multilingual support
-- semantic embeddings
-```
+Current implementation uses semantic analysis.
+
 ---
 
 ## Better Confidence Scoring --- COMPLETED!
 
-Current scoring is heuristic-based.
-```text
-Future improvements:
-- hallucination risk estimation
-- ambiguity scoring
-- LLM self-evaluation
-- semantic uncertainty detection
-```
+Built a separate operational confidence engine based on:
+
+- operational coverage
+- ambiguity
+- query type
+- business risk
 ---
 
 # Notes : 
