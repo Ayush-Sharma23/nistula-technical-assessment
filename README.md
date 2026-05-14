@@ -32,6 +32,11 @@ Run:
 python -m app.init_db
 ```
 
+## Seeding Property Data into DB
+Run:
+```bash
+python -m app.seed_properties
+```
 ---
 
 ## Classifier Model Setup 

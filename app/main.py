@@ -8,7 +8,7 @@ from app.schemas import IncomingMessage, UnifiedMessage
 from app.classifier import classify_query
 from app.ai_service import generate_reply
 from app.confidence import calculate_confidence
-from app.property_service import get_property
+from app.property_service import get_property, build_property_context
 
 app = FastAPI(title = APP_NAME)
 
@@ -50,7 +50,9 @@ async def handle_message(payload : IncomingMessage):
 		#creating a unified model from the payload
 		query_type = classify_query(payload.message)
 
+		#building property context
 		property_obj = get_property(payload.property_id)
+		property_context_ = build_property_context(property_obj)
 
 		if not property_obj:
 
@@ -81,7 +83,8 @@ async def handle_message(payload : IncomingMessage):
 		drafted_reply = generate_reply(
 			guest_name = unified.guest_name,
 			message=unified.message_text,
-			query_type=unified.query_type
+			query_type=unified.query_type,
+			property_context= property_context_
 		)
 
 		confidence_score, action = calculate_confidence(

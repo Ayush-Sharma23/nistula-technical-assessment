@@ -1,7 +1,7 @@
 from app.database import SessionLocal
 from app.models import Property
 
-
+# retrieves property data from db
 def get_property(property_id: str):
 
     db = SessionLocal()
@@ -16,7 +16,7 @@ def get_property(property_id: str):
 
     return property_obj
 
-
+#builds a string about property context for AI
 def build_property_context(property_obj):
 
     if not property_obj:

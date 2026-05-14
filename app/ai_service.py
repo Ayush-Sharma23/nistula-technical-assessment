@@ -1,7 +1,7 @@
 from anthropic import Anthropic
 
 from app.config import ANTHROPIC_API_KEY
-from app.constants import PROPERTY_CONTEXT
+# from app.constants import PROPERTY_CONTEXT
 
 client = Anthropic(
     api_key=ANTHROPIC_API_KEY
@@ -11,7 +11,8 @@ client = Anthropic(
 def generate_reply(
     guest_name: str,
     message: str,
-    query_type: str
+    query_type: str,
+    property_context
 ):
 
     prompt = f"""
@@ -34,7 +35,7 @@ Do not use marketing language.
 If information is missing, say a team member will confirm.
 
 PROPERTY CONTEXT:
-{PROPERTY_CONTEXT}
+{property_context}
 
 QUERY TYPE:
 {query_type}
