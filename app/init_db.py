@@ -1,3 +1,6 @@
+# Creates database tables from SQLAlchemy models
+# Used during initial local setup
+
 from app.database import engine
 from app.models import Base 
 

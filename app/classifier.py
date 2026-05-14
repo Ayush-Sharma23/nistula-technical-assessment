@@ -9,6 +9,8 @@ from pathlib import Path
 MODEL_DIR = Path(__file__).parent / "villa_bert_model"
 _classifier = VillaMessageClassifier(model_dir=str(MODEL_DIR))
 
+# DeBERTa-based intent classification layer
+# returns operational query category
 def classify_query(message: str) -> str:
     result = _classifier.predict(message)
     return result["category"]

@@ -1,3 +1,6 @@
+# Seeds initial operational property data
+# for local testing and development
+
 from app.database import SessionLocal
 from app.models import Property
 

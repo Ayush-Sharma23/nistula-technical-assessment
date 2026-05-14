@@ -1,3 +1,7 @@
+# Claude orchestration layer
+# Responsible only for AI reply generation
+
+
 from anthropic import Anthropic
 
 from app.config import ANTHROPIC_API_KEY
@@ -14,7 +18,8 @@ def generate_reply(
     query_type: str,
     property_context
 ):
-
+# Inject dynamic property context so the LLM
+# operates from database-backed information
     prompt = f"""
 You are a luxury villa hospitality assistant.
 

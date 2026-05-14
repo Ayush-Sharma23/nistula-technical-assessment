@@ -2,6 +2,8 @@ from sqlalchemy import Column, String, Text, DateTime
 
 from app.database import Base
 
+# Stores normalized inbound guest messages
+# across all communication channels
 class GuestMessage(Base):
     __tablename__ = "guest_messages"
     
@@ -23,7 +25,8 @@ class GuestMessage(Base):
 
     query_type = Column(String)
 
-
+# Stores operational property knowledge
+# used by AI generation and confidence scoring
 class Property(Base):
 
     __tablename__ = "properties"

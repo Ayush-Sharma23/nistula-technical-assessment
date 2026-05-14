@@ -33,6 +33,10 @@ def health_check():
 	"status":"healthy"
 	}
 
+# Main orchestration pipeline:
+# validate → classify → normalize → persist →
+# retrieve property context → confidence scoring →
+# AI drafting → action routing
 @app.post("/webhook/message")
 async def handle_message(payload : IncomingMessage):
 
@@ -61,10 +65,13 @@ async def handle_message(payload : IncomingMessage):
 				detail = "Property not found"
 				)
 
+		# Convert channel-specific payload into
+		# unified internal message schema
 		unified = UnifiedMessage.build(payload,query_type)
 
 		
-
+		# Persist normalized message for auditability
+		# and future conversation history support
 		db_message = GuestMessage(
 				message_id = unified.message_id,
 				source=unified.source,
@@ -80,6 +87,7 @@ async def handle_message(payload : IncomingMessage):
 
 		db.commit()
 
+		# api call to Claude to draft a reply
 		drafted_reply = generate_reply(
 			guest_name = unified.guest_name,
 			message=unified.message_text,
@@ -87,6 +95,8 @@ async def handle_message(payload : IncomingMessage):
 			property_context= property_context_
 		)
 
+		# Operational confidence determines whether
+		# AI handling is safe for autonomous response	
 		confidence_score, action = calculate_confidence(
 			unified.query_type,
 			unified.message_text,

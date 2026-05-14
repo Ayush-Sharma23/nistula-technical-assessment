@@ -59,13 +59,18 @@ def has_information_for_query(
 
     return False
 
-
+# Confidence scoring is based on:
+# - operational knowledge availability
+# - query risk
+# - ambiguity
+# - business rules
 def calculate_confidence(
     query_type: str,
     message: str,
     property_obj
 ):
-
+    # Complaints always require human oversight
+    # regardless of classifier certainty
     if query_type == "complaint":
         return 0.30, "escalate"
 
@@ -83,6 +88,8 @@ def calculate_confidence(
     else:
         score -= 0.20
 
+    # Special requests are operationally risky
+    # unless explicitly supported by property context
     low_risk_queries = [
         "pre_sales_availability",
         "pre_sales_pricing",

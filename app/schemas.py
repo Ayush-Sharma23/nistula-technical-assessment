@@ -2,8 +2,8 @@ from pydantic import BaseModel
 from datetime import datetime
 from uuid import uuid4
 
-# we are using BaseModel to validate the source message
-
+# Incoming webhook payload schema
+# shared across all supported channels
 class IncomingMessage(BaseModel):
 
 	source: str
@@ -18,6 +18,8 @@ class IncomingMessage(BaseModel):
 
 	property_id: str
 
+# Standardized API response returned
+# after AI orchestration pipeline completes
 class UnifiedMessage(BaseModel):
 
 	message_id:str
