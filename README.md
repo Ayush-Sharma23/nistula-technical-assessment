@@ -191,16 +191,8 @@ I'm gonna breakdown the problem into incremental steps :
 I'll worry about scalability and flexibility once our MVP works to a satifactory level.
 
 
-## WHAT I'M DOING RIGHT NOW
-```text
+## Confidence Scoring System
+The first implementation of the confidence scoring system was a very basic heuristical system. It used simple rules to determine the confidence score. 
+The current system is a major improvement over the previous one. It uses the property context available to see whether the current query can be resolved completely from the information available in the context. If it does and the query is not a complaint(which always requires human escalation) it calculates the confidence score based on that. It also checks whether the query is too vague to for AI. Now all these systems are implemented mathematically but with more time (and ClaudeAPI balance) I would move forward from this to a similar implementation but with the help of ClaudeAPI itself. I can have the scoring system get some of the obscure details such as query clarity from ClaudeAPI itself as part of the reply message, then extract that information from the message, remove the information part from the message and pass forward the clean message. Using that information to improve the scoring system. 
 
-	I'm shifting away from the simple heuristical scoring method and I'm gonna add more metrics such as :
-	1. Does claude have required context to answer this fully?
-	2. Is the query vague?
-	3. Is the query sensitive?
-	4. Does the request need human approval?
-	5. Does the request align with our policy?
 
-	Now since I don't have access to ClaudeAPI right now, I'll build it as a math engine. But I do want to make it into a smarter system by incorporating prompt engineering in the mix. 
-
-```
