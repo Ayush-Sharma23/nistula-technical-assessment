@@ -1,0 +1,32 @@
+Issues Tackled during the project 
+
+1. Transferring ownership of public schema to nistula_user (windows specific) : 
+	solution: running sql shell in administrator mode, and running following command :
+		ALTER SCHEMA public OWNER TO nistula_user;
+
+		GRANT ALL ON SCHEMA public TO nistula_user;
+
+		GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO nistula_user;
+
+		GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO nistula_user;	
+
+
+2. Classifying Messages into Categories.
+	I was stuck between making a rule-based classifier or a more complex version that uses NLP such as DeBERTa or a simpler TF-IDF model. 
+	Solution:
+		Since I'm creating an MVP rn , I will stick to the rule based classifer for now, I will try to make the rules as accurate as possible for now.
+		If I have time left after finishing this project, I will surely integrate a better classifer that is much more accurate. 
+		Benefit of using DeBERTa is that I can use the same model for confidence scoring as well (*Maybe*).
+
+3. Confidence Scoring
+	For this MVP I'm gonna be performing confidence scoring heuristically . I will later switch it to a probablistic confidence estimation.
+	Right now I will make a system in which 
+	1. Auto_send encompasses : 
+		"pre_sales_availability",
+        "pre_sales_pricing",
+        "post_sales_checkin"
+        with confidence score of above 0.85
+    2. Escalate encompasses : 
+    	score less that 0.60 or any complaint
+    	complaints are escalated automatically since we can't trust AI to handle customer complaints (might promise a refund or apologise excessively)
+    3. Everything else is under agent_review
