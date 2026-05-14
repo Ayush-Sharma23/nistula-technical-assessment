@@ -30,5 +30,30 @@
     "timestamp": "2026-05-05T10:30:00Z",
     "booking_ref": "NIS-2024-0893",
     "property_id": "villa-b1"
-  }
+  },
+  {
+  "source": "whatsapp",
+  "guest_name": "Arjun Mehta",
+  "message": "We may come from April 20-24. Is the villa available and what would be the total for 5 adults and 1 child?",
+  "timestamp": "2026-05-05T10:30:00Z",
+  "booking_ref": null,
+  "property_id": "villa-b1"
+},
+
+  {
+  "source": "instagram",
+  "guest_name": "Nina",
+  "message": "Can you arrange something special for my husband’s birthday dinner?",
+  "timestamp": "2026-05-05T11:00:00Z",
+  "booking_ref": "NIS-2026-2002",
+  "property_id": "villa-b1"
+},
+{
+  "source": "whatsapp",
+  "guest_name": "Riya Kapoor",
+  "message": "The AC has not worked since yesterday and nobody is helping us. I expect compensation.",
+  "timestamp": "2026-05-05T23:10:00Z",
+  "booking_ref": "NIS-2026-2003",
+  "property_id": "villa-b1"
+}
 ]
